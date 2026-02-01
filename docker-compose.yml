@@ -1,0 +1,12 @@
+services:
+  terraria-server:
+    container_name: terraria-server
+    image: ryshe/terraria:vanilla-latest
+    stdin_open: true
+    tty: true
+    ports:
+      - 7777:7777
+    volumes:
+      - ./data:/root/.local/share/Terraria/Worlds
+      - ./serverconfig.txt:/config/serverconfig.txt
+    restart: unless-stopped
