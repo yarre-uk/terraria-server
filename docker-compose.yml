@@ -15,7 +15,7 @@ services:
   # Run only in the union of archiver
   backup-sender:
     image: yarreuk/backup-sender:latest
-    container_name: backup-sender-minecraft
+    container_name: backup-sender-terraria
     command: --config /config.yml
     volumes:
       - ./sender-config.yml:/config.yml:ro
@@ -24,7 +24,7 @@ services:
 
   backup-archiver:
     image: yarreuk/backup-archiver:latest
-    container_name: backup-archiver
+    container_name: backup-archiver-terraria
     volumes:
       - ./archiver-config.yml:/config.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock
