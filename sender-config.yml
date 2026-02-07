@@ -1,0 +1,9 @@
+game_name: "terraria"
+
+receiver_url: "http://<your_ip>:8080/backup"
+
+backup_extensions:
+  - ".tar.gz"
+  - ".zip"
+  - ".tar"
+  - ".7z"

@@ -10,3 +10,24 @@ services:
       - ./data:/root/.local/share/Terraria/Worlds
       - ./serverconfig.txt:/config/serverconfig.txt
     restart: unless-stopped
+
+
+  # Run only in the union of archiver
+  backup-sender:
+    image: yarreuk/backup-sender:latest
+    container_name: backup-sender-minecraft
+    command: --config /config.yml
+    volumes:
+      - ./sender-config.yml:/config.yml:ro
+      - ./backups:/watch:ro
+    network_mode: host
+
+  backup-archiver:
+    image: yarreuk/backup-archiver:latest
+    container_name: backup-archiver
+    volumes:
+      - ./archiver-config.yml:/config.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/server:ro
+      - ./backups:/backups
+    restart: unless-stopped

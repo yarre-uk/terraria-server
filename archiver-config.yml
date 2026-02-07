@@ -1,0 +1,13 @@
+container_name: "terraria-server"
+
+interval_hours: 1
+
+source_path: "/server"
+
+output_path: "/backups"
+
+archive_format: "tar.gz"
+
+compression_level: 6
+
+naming_pattern: "{container}-{timestamp}.tar.gz"
